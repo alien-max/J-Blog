@@ -1,0 +1,11 @@
+<div class="w-full flex flex-wrap justify-center">
+    <div class="w-full bg-white p-2 border rounded-md shadow-md">
+        <h3 class="text-sm font-bold">تبلیغات</h3>
+        <hr>
+        {% for ad in ads %}
+            <div class="my-4">
+                <a href="{{ ad.link }}"><img src="{{ ad.picture.url }}" alt="{{ ad.title }}"></a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

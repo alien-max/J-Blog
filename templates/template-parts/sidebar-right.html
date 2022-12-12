@@ -1,0 +1,22 @@
+{% load static %}
+<div class="w-full flex flex-wrap justify-center">
+    <form action="/q" method="post" class="w-full flex text-sm my-auto bg-white rounded-md p-1 border shadow-md">
+        {% csrf_token %}
+        <input type="text" name="q" placeholder="جستجو کنید" class="w-full p-2 rounded">
+        <button type="submit" class="my-auto px-2">
+            <img src="{% static 'media/icons/Search.svg' %}" alt="search" class="w-6">
+        </button>
+    </form>
+    <div class="w-full bg-white p-2 my-4 border rounded-md shadow-md">
+        
+        <h3 class="text-sm font-bold">دسته بندی ها</h3>
+        <hr>
+        <ul class="text-sm px-4 py-2" style="list-style-type: square;">
+            {% for category in categories %}
+                <li class="py-2">
+                    <a href="{% url 'category' category.pk %}">{{ category.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="w-full border p-2 bg-white rounded-md shadow-md">
+    <h2 class="text-md font-bold">{{ blog.title }}</h2>
+    <hr>
+    <div class="article-content text-justify text-sm p-2">
+        <div class="w-full flex justify-center py-2">
+            <img src="{{ blog.thumbnail.url }}" alt="{{ blog.title }}" width="800" class="rounded-md">
+        </div>
+        <hr class="py-2">
+        {{ blog.remark|safe }}
+    </div>
+</div>
