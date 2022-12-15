@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 def main(request):
     ads = Ads.objects.all()
     categories = Categories.objects.all()
-    blogs = Blogs.objects.all()
+    blogs = Blogs.objects.filter(status=True)
     blog_list = []
     for i in blogs:
         excerpt_text = BeautifulSoup(i.remark, 'html.parser').get_text()
@@ -75,7 +75,7 @@ def search(request):
         blog_list = []
         query = request.POST.get('q')
         if query:
-            blogs = Blogs.objects.filter(title__contains=query)
+            blogs = Blogs.objects.filter(title__contains=query, status=True)
             for i in blogs:
                 excerpt_text = BeautifulSoup(i.remark, 'html.parser').get_text()
                 excerpt_list = excerpt_text.split(' ')
